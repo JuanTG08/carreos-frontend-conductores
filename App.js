@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { Link, NativeRouter, Route, Routes } from 'react-router-native';
+import Home from './Components/Home';
+import Login from './Components/Start/Login'
+import Register from './Components/Start/Register'
+import FormRegister from './Components/Start/Register/FormRegister';
+import Homescreen from './HomeScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeRouter>
+      <Routes>
+        <Route path='/' element={<Homescreen />}>
+          <Route path='Home' element={<Home />} />
+        </Route>
+
+
+        <Route path='/Login' element={<Login />} />
+        <Route path='/Register' element={<Register />} />
+        <Route path='/Register/FormRegister' element={<FormRegister />} />
+      </Routes>
+    </NativeRouter>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
